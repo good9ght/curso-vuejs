@@ -16,8 +16,8 @@
       <br>
 
       <label for="nome">Novo Nome:</label>
-      <input id="nome" type="text" v-model="nome">
-      <button id="botao">+</button>
+      <input id="nome" type="text" v-model="nome" @keyUp="digitar">
+      <button v-on:click="addNome">+</button>
 
     </div>
     <script>
@@ -29,14 +29,24 @@
         },
         /*
         |
+        | methods é onde devem ficar todos os métodos do componente
+        |
+        */
+        methods: {
+          addNome() {
+            this.nomes.push(this.nome);
+            this.nome = "";
+          },
+          digitar() {
+            console.log('digitou');
+          }
+        },
+        /*
+        |
         | mounted() é chamado assim que tudo estiver pronto com a instância de Vue
         |
         */
         mounted() {
-            document.querySelector("#botao").addEventListener("click", () => {
-              app.nomes.push(app.nome);
-              app.nome = "";
-            });
         }
       });
     </script>
