@@ -6,25 +6,37 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   </head>
   <body>
-    <!--
-      | Vue só funciona dentro do elemento definido(#root)
-      | Digitar e automáticamente atualizar é chamado de "Reactivity" (Reatividade)
-    -->
     <div id="root">
-      <input type="text" v-model="mensagem">
+      <ul>
+        <li v-for="nome in nomes" v-text="nome">
+          <!-- v-text coloca o texto aqui -->
+        </li>
+      </ul>
+
       <br>
-      <br>
-      O valor do input é: {{ mensagem }}
+
+      <label for="nome">Novo Nome:</label>
+      <input id="nome" type="text" v-model="nome">
+      <button id="botao">+</button>
+
     </div>
     <script>
-    /*
-    |  o objeto data pode ser chamado de single source of truth, pois assim que for alterada
-    |  a view será alterada também
-    */
-      new Vue({
+      let app = new Vue({
         el: '#root',
         data: {
-          mensagem: "Hello World"
+          nome: "",
+          nomes: [ "Descartes", "Sócrates", "Platão", "Aristóteles"]
+        },
+        /*
+        |
+        | mounted() é chamado assim que tudo estiver pronto com a instância de Vue
+        |
+        */
+        mounted() {
+            document.querySelector("#botao").addEventListener("click", () => {
+              app.nomes.push(app.nome);
+              app.nome = "";
+            });
         }
       });
     </script>
