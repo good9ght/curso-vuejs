@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Vue.js</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <!-- Vue só funciona dentro do elemento definido(#root)-->
+    <div id="root">
+      <input type="text" v-model="mensagem">
+      <br>
+      <br>
+      O valor do input é: {{ mensagem }}
+    </div>
+    <script>
+      new Vue({
+        el: '#root',
+        data: {
+          mensagem: "Hello World"
+        }
+      });
+    </script>
+  </body>
+</html>
