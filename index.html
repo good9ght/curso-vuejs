@@ -6,8 +6,10 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   </head>
   <body>
-    <!-- Vue só funciona dentro do elemento definido(#root)-->
-    <!-- Digitar e automáticamente atualizar é chamado de "Reactivity" (Reatividade) -->
+    <!--
+      | Vue só funciona dentro do elemento definido(#root)
+      | Digitar e automáticamente atualizar é chamado de "Reactivity" (Reatividade)
+    -->
     <div id="root">
       <input type="text" v-model="mensagem">
       <br>
@@ -15,6 +17,10 @@
       O valor do input é: {{ mensagem }}
     </div>
     <script>
+    /*
+    |  o objeto data pode ser chamado de single source of truth, pois assim que for alterada
+    |  a view será alterada também
+    */
       new Vue({
         el: '#root',
         data: {
