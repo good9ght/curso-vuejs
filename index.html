@@ -11,12 +11,13 @@
   </head>
   <body>
     <div id="root" class="container">
-      <!-- @fechar é um evento personalizado no componente -->
-      <modal @fechar="exibir = false" v-if="exibir">
-        <slot slot="titulo">Mensagem</slot>
-        <slot>Tem certeza que deseja salvar as alterações?</slot>
-      </modal>
-      <button class="button" @click="exibir = true">Abrir Modal</button>
+      <progresso-view inline-template>
+        <div>
+          <p>O seu progresso é {{ porcentagem }}%</p>
+          <br>
+          <button class="button" @click="aumentar">aumentar</button>
+        </div>
+      </progresso-view>
     </div>
     <script src="main.js"></script>
   </body>
