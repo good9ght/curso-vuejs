@@ -6,16 +6,13 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <link rel="stylesheet" href="node_modules/bulma/css/bulma.css">
     <style>
-      body { padding-top: 20px }
+      .container { margin: 5% }
     </style>
   </head>
   <body>
     <div id="root" class="container">
-      <!-- @fechar é um evento personalizado no componente -->
-      <modal @fechar="exibir = false" v-if="exibir">
-        Texto teste da modal da moda
-      </modal>
-      <button class="button" @click="exibir = true">Abrir Modal</button>
+      <cupom @aplicar-cupom="aplicarCupom"></cupom>
+      <div v-show="cupomAplicado"> O cupom com o código:{{ codigoCupom }} foi aplicado</div>
     </div>
     <script src="main.js"></script>
   </body>
