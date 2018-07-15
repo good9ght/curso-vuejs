@@ -5,17 +5,25 @@
     <title>Vue.js</title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <link rel="stylesheet" href="node_modules/bulma/css/bulma.css">
-    <style>
-      body { padding-top: 20px }
-    </style>
   </head>
+  <style>
+    .container {
+      margin: 5%
+    }
+  </style>
   <body>
     <div id="root" class="container">
-      <!-- @fechar é um evento personalizado no componente -->
-      <modal @fechar="exibir = false" v-if="exibir">
-        Texto teste da modal da moda
-      </modal>
-      <button class="button" @click="exibir = true">Abrir Modal</button>
+      <tabs>
+        <tab nome="Sobre" :selecionada="true">
+          <h1>Está é a tab que descreve nossa empresa</h1>
+        </tab>
+        <tab nome="Nosso Objetivo">
+          <h1>Está tab explica nosso objetivo</h1>
+        </tab>
+        <tab nome="Produtos">
+          <h1>Está tab mostra todos os nossos produtos</h1>
+        </tab>
+      </tabs>
     </div>
     <script src="main.js"></script>
   </body>
