@@ -4,49 +4,32 @@
     <meta charset="utf-8">
     <title>Vue.js</title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+      .vermelho { color: red }
+      .verde { color: green }
+    </style>
   </head>
   <body>
     <div id="root">
-      <ul>
-        <li v-for="nome in nomes" v-text="nome">
-          <!-- v-text coloca o texto aqui -->
-        </li>
-      </ul>
-
-      <br>
-
-      <label for="nome">Novo Nome:</label>
-      <input id="nome" type="text" v-model="nome" @keyUp="digitar">
-      <button v-on:click="addNome">+</button>
-
+      <!-- v-bind pode ser abreviado para : -->
+      <button v-bind:title="titulo" v-bind:class="{ 'vermelho' : vermelho, 'verde': !vermelho }"
+        @mouseover="alterarBotao"
+        @click="vermelho = !vermelho">
+        {{ botao }}
+      </button>
     </div>
     <script>
       let app = new Vue({
         el: '#root',
         data: {
-          nome: "",
-          nomes: [ "Descartes", "Sócrates", "Platão", "Aristóteles"]
+          titulo: "Esse é o título do botão.",
+          botao: "Passe o mouse sobre mim",
+          vermelho: true
         },
-        /*
-        |
-        | methods é onde devem ficar todos os métodos do componente
-        |
-        */
         methods: {
-          addNome() {
-            this.nomes.push(this.nome);
-            this.nome = "";
-          },
-          digitar() {
-            console.log('digitou');
+          alterarBotao() {
+            this.botao = "Clique em mim";
           }
-        },
-        /*
-        |
-        | mounted() é chamado assim que tudo estiver pronto com a instância de Vue
-        |
-        */
-        mounted() {
         }
       });
     </script>
