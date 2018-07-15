@@ -1,22 +1,22 @@
-Vue.component('mensagem', {
-  props: [ 'titulo', 'texto' ],
+Vue.component('modal', {
+  /*
+  |
+  | $emit('eventoPersonalizado') pode ser usado para emitir um evento personalizado
+  |
+  */
   template: `
-    <article class="message" v-show="exibir">
-      <div class="message-header">
-        <p>{{ titulo }}</p>
-        <button class="delete" aria-label="delete" @click="exibir = false"></button>
-      </div>
-      <div class="message-body">
-        {{ texto }}
-      </div>
-    </article>`,
-  data() {
-    return {
-      exibir: true
-    }
-  }
+  <div class="modal is-active">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+      <div class="box"><slot></slot></div>
+    </div>
+    <button class="modal-close is-large" aria-label="close" @click="$emit('fechar')"></button>
+  </div>`
 });
 
 new Vue({
-  el: '#root'
+  el: '#root',
+  data: {
+    exibir: false
+  }
 });

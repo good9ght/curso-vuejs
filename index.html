@@ -11,8 +11,11 @@
   </head>
   <body>
     <div id="root" class="container">
-      <mensagem titulo="Hello World" texto="Que louco isso"></mensagem>
-      <mensagem titulo="Olá Mundo" texto="That's crazy"></mensagem>
+      <!-- @fechar é um evento personalizado no componente -->
+      <modal @fechar="exibir = false" v-if="exibir">
+        Texto teste da modal da moda
+      </modal>
+      <button class="button" @click="exibir = true">Abrir Modal</button>
     </div>
     <script src="main.js"></script>
   </body>
