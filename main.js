@@ -1,3 +1,11 @@
+/*
+|
+| É possível criar uma instância de Vue e utilizá-la para emitir
+| e ouvir eventos entre componentes
+|
+*/
+window.Event = new Vue();
+
 Vue.component('cupom', {
   /*
   |
@@ -5,11 +13,16 @@ Vue.component('cupom', {
   |
   */
   template: `
-    <input type="text" v-model="codigo" @blur="$emit('aplicar-cupom', codigo)">
+    <input type="text" v-model="codigo" @blur="aplicar">
   `,
   data() {
     return {
       codigo: ""
+    }
+  },
+  methods: {
+    aplicar() {
+      Event.$emit('aplicar-cupom', this.codigo);
     }
   }
 });
@@ -20,14 +33,14 @@ new Vue({
     cupomAplicado: false,
     codigoCupom: ""
   },
-  methods: {
-    aplicarCupom(codigo) {
+  created() {
+    Event.$on('aplicar-cupom', codigo => {
       if(codigo) {
         this.codigoCupom = codigo;
         this.cupomAplicado = true;
       } else {
         this.cupomAplicado = false;
       }
-    }
+    });
   }
 });
