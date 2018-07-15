@@ -6,29 +6,52 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <style>
       .vermelho { color: red }
-      .verde { color: green }
     </style>
   </head>
   <body>
     <div id="root">
-      <!-- v-bind pode ser abreviado para : -->
-      <button v-bind:title="titulo" v-bind:class="{ 'vermelho' : vermelho, 'verde': !vermelho }"
-        @mouseover="alterarBotao"
-        @click="vermelho = !vermelho">
-        {{ botao }}
-      </button>
+      <h1 v-text="tituloInverso" class="vermelho"></h1>
+      <div>
+        <h2>Tarefas</h2>
+        <ul>
+          <li v-for="tarefa in tarefas" v-text="tarefa.texto"></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Tarefas Incompletas</h2>
+        <ul>
+          <li v-for="tarefa in tarefasIncompletas" v-text="tarefa.texto"></li>
+        </ul>
+      </div>
     </div>
     <script>
       let app = new Vue({
         el: '#root',
         data: {
-          titulo: "Esse é o título do botão.",
-          botao: "Passe o mouse sobre mim",
-          vermelho: true
+          titulo: "Hello World",
+          tarefas: [
+            { texto: "Aprender Vue.js", completa: false },
+            { texto: "Aprender Laravel", completa: true },
+            { texto: "Aprender AngularJS", completa: true },
+            { texto: "Aprender JavaScript", completa: true },
+            { texto: "Aprender Angular", completa: false },
+            { texto: "Aprender HTML", completa: true },
+            { texto: "Aprender React", completa: false },
+            { texto: "Aprender NoSQL", completa: false },
+            { texto: "Se tornar Super Full Stack", completa: false },
+          ]
         },
-        methods: {
-          alterarBotao() {
-            this.botao = "Clique em mim";
+        /*
+        |
+        | computed properties são carregadas antes do carregamento da view
+        |
+        */
+        computed: {
+          tituloInverso() {
+            return this.titulo.split('').reverse().join('');
+          },
+          tarefasIncompletas() {
+            return this.tarefas.filter(tarefa => !tarefa.completa);
           }
         }
       });
