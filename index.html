@@ -13,7 +13,8 @@
     <div id="root" class="container">
       <!-- @fechar é um evento personalizado no componente -->
       <modal @fechar="exibir = false" v-if="exibir">
-        Texto teste da modal da moda
+        <slot slot="titulo">Mensagem</slot>
+        <slot>Tem certeza que deseja salvar as alterações?</slot>
       </modal>
       <button class="button" @click="exibir = true">Abrir Modal</button>
     </div>
