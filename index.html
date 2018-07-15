@@ -4,57 +4,14 @@
     <meta charset="utf-8">
     <title>Vue.js</title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <style>
-      .vermelho { color: red }
-    </style>
   </head>
   <body>
     <div id="root">
-      <h1 v-text="tituloInverso" class="vermelho"></h1>
-      <div>
-        <h2>Tarefas</h2>
-        <ul>
-          <li v-for="tarefa in tarefas" v-text="tarefa.texto"></li>
-        </ul>
-      </div>
-      <div>
-        <h2>Tarefas Incompletas</h2>
-        <ul>
-          <li v-for="tarefa in tarefasIncompletas" v-text="tarefa.texto"></li>
-        </ul>
-      </div>
+      <h2>Tarefas</h2>
+      <ul>
+        <tarefa v-for="tarefa in tarefas" v-text="tarefa.texto"></tarefa>
+      </ul>
     </div>
-    <script>
-      let app = new Vue({
-        el: '#root',
-        data: {
-          titulo: "Hello World",
-          tarefas: [
-            { texto: "Aprender Vue.js", completa: false },
-            { texto: "Aprender Laravel", completa: true },
-            { texto: "Aprender AngularJS", completa: true },
-            { texto: "Aprender JavaScript", completa: true },
-            { texto: "Aprender Angular", completa: false },
-            { texto: "Aprender HTML", completa: true },
-            { texto: "Aprender React", completa: false },
-            { texto: "Aprender NoSQL", completa: false },
-            { texto: "Se tornar Super Full Stack", completa: false },
-          ]
-        },
-        /*
-        |
-        | computed properties são carregadas antes do carregamento da view
-        |
-        */
-        computed: {
-          tituloInverso() {
-            return this.titulo.split('').reverse().join('');
-          },
-          tarefasIncompletas() {
-            return this.tarefas.filter(tarefa => !tarefa.completa);
-          }
-        }
-      });
-    </script>
+    <script src="main.js"></script>
   </body>
 </html>
