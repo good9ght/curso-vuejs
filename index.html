@@ -4,11 +4,15 @@
     <meta charset="utf-8">
     <title>Vue.js</title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="node_modules/bulma/css/bulma.css">
+    <style>
+      body { padding-top: 20px }
+    </style>
   </head>
   <body>
-    <div id="root">
-      <h2>Tarefas</h2>
-      <lista-tarefas></lista-tarefas>
+    <div id="root" class="container">
+      <mensagem titulo="Hello World" texto="Que louco isso"></mensagem>
+      <mensagem titulo="Olá Mundo" texto="That's crazy"></mensagem>
     </div>
     <script src="main.js"></script>
   </body>
