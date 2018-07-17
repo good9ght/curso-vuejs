@@ -1,24 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Vue.js</title>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <link rel="stylesheet" href="node_modules/bulma/css/bulma.css">
-    <style>
-      .container { margin: 5% }
-    </style>
+    <title>hello-world</title>
   </head>
   <body>
-    <div id="root" class="container">
-      <progresso-view inline-template>
-        <div>
-          <p>O seu progresso é {{ porcentagem }}%</p>
-          <br>
-          <button class="button" @click="aumentar">aumentar</button>
-        </div>
-      </progresso-view>
-    </div>
-    <script src="main.js"></script>
+    <div id="app"></div>
+    <script src="/dist/build.js"></script>
   </body>
 </html>
